@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ThirdFragment extends StatelessWidget {
+class FourthFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -12,7 +12,7 @@ class ThirdFragment extends StatelessWidget {
               new Padding(padding: const EdgeInsets.all(8.0)),
               new Image.asset('asset/navicy1.jpg',height: 450.0,width: 450.0,),
               new Padding(padding: const EdgeInsets.symmetric(vertical: 8.0)),
-              new Text("Here You get to See the ICY's shared by your Social Media Freinds on the ICY WORLD Media..!!",style: new TextStyle(fontFamily: 'Skranji',letterSpacing: 2.0,fontSize: 18.0,wordSpacing: 2.0),textAlign: TextAlign.center,),
+              new Text("Here You get to See your ICY's uploaded to the ICY WORLD Media..!!",style: new TextStyle(fontFamily: 'Skranji',letterSpacing: 2.0,fontSize: 18.0,wordSpacing: 2.0),textAlign: TextAlign.center,),
             ],
           ),
         )

@@ -1,7 +1,11 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:icycandy_flutter/drawers/drawer1.dart';
 import 'package:icycandy_flutter/drawers/drawer2.dart';
 import 'package:icycandy_flutter/drawers/drawer3.dart';
+import 'package:icycandy_flutter/drawers/drawer4.dart';
 
 class DrawerItem {
   String title;
@@ -11,9 +15,10 @@ class DrawerItem {
 
 class drawerpage extends StatefulWidget{
   final draweritems=[
-    new DrawerItem("Trending",Icons.assistant),
-    new DrawerItem("drawer2",Icons.assistant),
-    new DrawerItem("drawer3",Icons.assistant),
+    new DrawerItem("Home",Icons.home),
+    new DrawerItem("Trending",Icons.trending_up),
+    new DrawerItem("My Freinds",Icons.motorcycle),
+    new DrawerItem("My Uploads",Icons.file_upload),
   ];
 
   @override
@@ -34,6 +39,8 @@ class drawerhomepageState extends State<drawerpage> {
         return new SecondFragment();
       case 2:
         return new ThirdFragment();
+      case 3:
+        return new FourthFragment();
 
       default:
         return new Text("Error");
@@ -63,12 +70,16 @@ class drawerhomepageState extends State<drawerpage> {
       appBar: new AppBar(
         title: new Text('ICY CANDY'),
         backgroundColor: Colors.orangeAccent,
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.close), onPressed: ()=> exit(0),tooltip: 'Close App..!!',)
+        ],
       ),
       drawer: new Drawer(
+        elevation: 12.0,
         child: new Column(
           children: <Widget>[
             new UserAccountsDrawerHeader(
-                accountName: new Text("Icy World..!!"), accountEmail: null),
+                accountName: new Text("Icy World..!!",textScaleFactor: 2.0,style: new TextStyle(fontFamily: 'Skranji'),), accountEmail: null,currentAccountPicture: new Image.asset('asset/notifyicon.png',fit: BoxFit.fill,height: 180.0,),decoration: new BoxDecoration(color: Colors.orangeAccent,shape: BoxShape.rectangle,),),
             new Column(children: drawerOptions)
           ],
         ),
@@ -76,4 +87,35 @@ class drawerhomepageState extends State<drawerpage> {
       body: _getDrawerItemWidget(_selectedDrawerIndex),
     );
   }
+
+  // ALERT DIALOG BOX TO BE ATTACHED..!!
+  /*
+  Future<Null> _neverSatisfied() async {
+    return showDialog<Null>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return new AlertDialog(
+          title: new Text('Rewind and remember'),
+          content: new SingleChildScrollView(
+            child: new ListBody(
+              children: <Widget>[
+                new Text('You Wanna Exit..!!'),
+                new Text('Press Back Button to STAY..!!'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text('Exit..!!'),
+              onPressed: () {
+                    ()=> Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  } */
 }
+
